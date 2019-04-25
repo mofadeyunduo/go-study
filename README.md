@@ -16,6 +16,17 @@
 - 重命名：import myfmt "fmt"
 - 禁止导入不使用，会编译错误，需要初始化使用 import _"db/driver/mysql"，会执行 init 函数
 
+## 一些代码合作相关的建议
+
+- 分享给他人时，包应该在代码库的根目录中
+- 包内容不要过多
+- go fmt
+- 写文档
+
+## 依赖管理
+
+- ？
+
 ### 经典路径
 
 ```
@@ -62,6 +73,7 @@ shift shift 搜索 GOPATH 设置环境变量
 - go run 编译后执行
 - go fmt 格式化代码，可以配合 git 强制 fmt
 - go clean 清除可执行文件
+- go doc 查看文档，go doc tar 查看 tar 文档，godoc -http=:8080，生成 web 文档。可以在目录下建 doc.go，生成包的注释
 
 ## 搭建一个 web server
 
