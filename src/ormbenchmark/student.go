@@ -11,7 +11,7 @@ type Student struct {
 
 type StudentGrade struct {
 	Student
-	StudentId sql.NullInt64    `gorm:"column:student_id" db:"student_id"`
+	StudentId sql.NullInt64  `gorm:"column:student_id" db:"student_id"`
 	GradeName sql.NullString `gorm:"column:grade_name" db:"grade_name"`
 }
 

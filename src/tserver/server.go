@@ -16,21 +16,21 @@ func route() {
 func httpHandler(fn func(w http.ResponseWriter, r *http.Request)) func(w http.ResponseWriter, r *http.Request) {
 	var wg sync.WaitGroup
 	wg.Add(2)
-	go valid(wg)
-	go logHttp(wg)
+	//go valid(wg)
+	//go logHttp(wg)
 	wg.Wait()
 
 	return fn
 }
 
-func valid(wg sync.WaitGroup)  {
-	defer wg.Done()
+//func valid(wg sync.WaitGroup)  {
+//	defer wg.Done()
+//
+//}
 
-}
-
-func logHttp(wg sync.WaitGroup)  {
-	defer wg.Done()
-}
+//func logHttp(wg sync.WaitGroup)  {
+//	defer wg.Done()
+//}
 
 func startUpServer() {
 	err := http.ListenAndServe(":8080", nil)

@@ -1,5 +1,10 @@
 # Golang 学习笔记
 
+# Git hook
+
+- 利用 git hook 和 go fmt 等函数进行 go 编译检查
+- 脚本位置 $PROJECT/.git/hooks/pre-commit
+
 # Go 特点
 
 - 开发速度快，语法简单，编译速度快
