@@ -2,6 +2,7 @@ package ormbenchmark
 
 import (
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/mofadeyunduo/golang-study/framework-practice/ormbenchmark/model"
 	"testing"
 )
 
@@ -13,31 +14,31 @@ var (
 	DeleteSQL         = "delete from student where id = ?"
 )
 
-func benchmarkForSelectAll(crud CRUD, b *testing.B) {
+func benchmarkForSelectAll(crud model.CRUD, b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		crud.SelectAll(SelectAllSQL)
 	}
 }
 
-func benchmarkForSelectLeftJoin(crud CRUD, b *testing.B) {
+func benchmarkForSelectLeftJoin(crud model.CRUD, b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		crud.SelectLeftJoin(SelectLeftJoinSQL)
 	}
 }
 
-func benchmarkForInsert(crud CRUD, b *testing.B) {
+func benchmarkForInsert(crud model.CRUD, b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		crud.Insert(InsertSQL)
 	}
 }
 
-func benchmarkForUpdate(crud CRUD, b *testing.B) {
+func benchmarkForUpdate(crud model.CRUD, b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		crud.Update(UpdateSQL)
 	}
 }
 
-func benchmarkForDelete(crud CRUD, b *testing.B) {
+func benchmarkForDelete(crud model.CRUD, b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		crud.Delete(DeleteSQL)
 	}
@@ -45,63 +46,63 @@ func benchmarkForDelete(crud CRUD, b *testing.B) {
 
 // sqlx
 func BenchmarkSqlxcrud_SelectAll(b *testing.B) {
-	benchmarkForSelectAll(Sqlxcrud{}, b)
+	benchmarkForSelectAll(model.Sqlxcrud{}, b)
 }
 
 func BenchmarkSqlxcrud_SelectLeftJoin(b *testing.B) {
-	benchmarkForSelectLeftJoin(Sqlxcrud{}, b)
+	benchmarkForSelectLeftJoin(model.Sqlxcrud{}, b)
 }
 
 func BenchmarkSqlxcrud_Insert(b *testing.B) {
-	benchmarkForInsert(Sqlxcrud{}, b)
+	benchmarkForInsert(model.Sqlxcrud{}, b)
 }
 
 func BenchmarkSqlxcrud_Update(b *testing.B) {
-	benchmarkForUpdate(Sqlxcrud{}, b)
+	benchmarkForUpdate(model.Sqlxcrud{}, b)
 }
 
 func BenchmarkSqlxcrud_Delete(b *testing.B) {
-	benchmarkForDelete(Sqlxcrud{}, b)
+	benchmarkForDelete(model.Sqlxcrud{}, b)
 }
 
 // gorm
 func BenchmarkGormcrud_SelectAll(b *testing.B) {
-	benchmarkForSelectAll(Gormcrud{}, b)
+	benchmarkForSelectAll(model.Gormcrud{}, b)
 }
 
 func BenchmarkGormcrud_SelectLeftJoin(b *testing.B) {
-	benchmarkForSelectLeftJoin(Gormcrud{}, b)
+	benchmarkForSelectLeftJoin(model.Gormcrud{}, b)
 }
 
 func BenchmarkGormcrud_Insert(b *testing.B) {
-	benchmarkForInsert(Gormcrud{}, b)
+	benchmarkForInsert(model.Gormcrud{}, b)
 }
 
 func BenchmarkGormcrud_Update(b *testing.B) {
-	benchmarkForUpdate(Gormcrud{}, b)
+	benchmarkForUpdate(model.Gormcrud{}, b)
 }
 
 func BenchmarkGormcrud_Delete(b *testing.B) {
-	benchmarkForDelete(Gormcrud{}, b)
+	benchmarkForDelete(model.Gormcrud{}, b)
 }
 
 // raw
 func BenchmarkRawcrud_SelectAll(b *testing.B) {
-	benchmarkForSelectAll(Rawcrud{}, b)
+	benchmarkForSelectAll(model.Rawcrud{}, b)
 }
 
 func BenchmarkRawcrud_SelectLeftJoin(b *testing.B) {
-	benchmarkForSelectLeftJoin(Rawcrud{}, b)
+	benchmarkForSelectLeftJoin(model.Rawcrud{}, b)
 }
 
 func BenchmarkRawcrud_Insert(b *testing.B) {
-	benchmarkForInsert(Rawcrud{}, b)
+	benchmarkForInsert(model.Rawcrud{}, b)
 }
 
 func BenchmarkRawcrud_Update(b *testing.B) {
-	benchmarkForUpdate(Rawcrud{}, b)
+	benchmarkForUpdate(model.Rawcrud{}, b)
 }
 
 func BenchmarkRawcrud_Delete(b *testing.B) {
-	benchmarkForDelete(Rawcrud{}, b)
+	benchmarkForDelete(model.Rawcrud{}, b)
 }

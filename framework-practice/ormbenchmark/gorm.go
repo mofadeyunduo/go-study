@@ -2,6 +2,7 @@ package ormbenchmark
 
 import (
 	"github.com/jinzhu/gorm"
+	"github.com/mofadeyunduo/golang-study/framework-practice/ormbenchmark/model"
 	"log"
 )
 
@@ -20,18 +21,18 @@ func init() {
 }
 
 func (Gormcrud) SelectAll(sql string) {
-	var students []Student
+	var students []model.Student
 	gormdb.Find(&students)
 }
 
 func (Gormcrud) SelectLeftJoin(sql string) {
-	var sg []StudentGrade
+	var sg []model.StudentGrade
 	gormdb.Table("student").Select("*").Joins("left join grade on student.id = grade.student_id").Find(&sg)
 }
 
 func (Gormcrud) Insert(sql string) {
 	tx := gormdb.Begin()
-	student := Student{
+	student := model.Student{
 		0, "JINX", 1, "Japan",
 	}
 	gormdb.Save(&student)
@@ -40,7 +41,7 @@ func (Gormcrud) Insert(sql string) {
 
 func (Gormcrud) Update(sql string) {
 	tx := gormdb.Begin()
-	student := Student{
+	student := model.Student{
 		3, "NGINX", 0, "LONDON",
 	}
 	gormdb.Save(&student)
@@ -49,7 +50,7 @@ func (Gormcrud) Update(sql string) {
 
 func (Gormcrud) Delete(sql string) {
 	tx := gormdb.Begin()
-	student := Student{
+	student := model.Student{
 		Id: 100,
 	}
 	gormdb.Delete(&student)

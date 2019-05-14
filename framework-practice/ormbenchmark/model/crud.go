@@ -1,4 +1,4 @@
-package ormbenchmark
+package model
 
 type CRUD interface {
 	SelectAll(sql string)

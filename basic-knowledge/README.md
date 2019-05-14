@@ -1,8 +1,8 @@
-# Golang 学习笔记
+# Go 学习笔记
 
 # Git hook
 
-- 利用 git hook 和 go fmt 等函数进行 go 编译检查
+- 利用 git hook 和 go fmt 等命令对 go 程序进行检查 
 - 脚本位置 $PROJECT/.git/hooks/pre-commit
 
 # Go 特点
@@ -86,40 +86,10 @@
 
 ## 依赖管理
 
-- ？
-
-### 经典路径
-
-```
-- project
--- src
---- package1
----- code1.go
----- code2.go
---- package2 
----- code3.go 
-```
-
-code1.go:
-```go
-package package1
-
-import (
-  "package2"
-)
-
-func init() {
-  package2.DoSomething()
-}
-```
-
-code3.go:
-```
-package package2
-
-func DoSomething() {
-}
-
+- go module，官方
+- 初始化
+```gotemplate
+go mod init packageName
 ```
 
 ### GoLand 设置
@@ -134,18 +104,8 @@ shift shift 搜索 GOPATH 设置环境变量
 - go run 编译后执行
 - go fmt 格式化代码，可以配合 git 强制 fmt
 - go clean 清除可执行文件
+- go test 执行测试
 - go doc 查看文档，go doc tar 查看 tar 文档，godoc -http=:8080，生成 web 文档。可以在目录下建 doc.go，生成包的注释
-
-## 搭建一个 web server
-
-- 代码在 tserver 中
-- 实现了 http 接口功能
-- MySQL 操作数据库 CRUD
-
-未实现：
-- rest 风格
-- ORM 框架
-- 日志
 
 ### 问题
 

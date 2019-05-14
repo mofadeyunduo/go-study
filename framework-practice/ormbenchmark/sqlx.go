@@ -3,6 +3,7 @@ package ormbenchmark
 import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
+	"github.com/mofadeyunduo/golang-study/framework-practice/ormbenchmark/model"
 	"log"
 )
 
@@ -20,7 +21,7 @@ func init() {
 }
 
 func (x Sqlxcrud) SelectAll(sql string) {
-	idStu := []Student{}
+	idStu := []model.Student{}
 	err := sqlxdb.Select(&idStu, sql)
 
 	if err != nil {
@@ -29,7 +30,7 @@ func (x Sqlxcrud) SelectAll(sql string) {
 }
 
 func (x Sqlxcrud) SelectLeftJoin(sql string) {
-	var idStu []StudentGrade
+	var idStu []model.StudentGrade
 	err := sqlxdb.Select(&idStu, sql)
 
 	if err != nil {
@@ -38,7 +39,7 @@ func (x Sqlxcrud) SelectLeftJoin(sql string) {
 }
 
 func (x Sqlxcrud) Insert(sql string) {
-	s := Student{
+	s := model.Student{
 		0, "Piers", 1, "China",
 	}
 	tx := sqlxdb.MustBegin()
@@ -50,7 +51,7 @@ func (x Sqlxcrud) Insert(sql string) {
 }
 
 func (x Sqlxcrud) Update(sql string) {
-	s := Student{
+	s := model.Student{
 		2, "Fiers", 1, "America",
 	}
 	tx := sqlxdb.MustBegin()

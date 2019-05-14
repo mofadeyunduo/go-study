@@ -1,4 +1,4 @@
-package ormbenchmark
+package model
 
 import "database/sql"
 

@@ -2,6 +2,7 @@ package ormbenchmark
 
 import (
 	"database/sql"
+	"github.com/mofadeyunduo/golang-study/framework-practice/ormbenchmark/model"
 	"log"
 )
 
@@ -31,9 +32,9 @@ func (Rawcrud) SelectAll(sql string) {
 	}
 	defer stat.Close()
 
-	var students []Student
+	var students []model.Student
 	for stat.Next() {
-		s := Student{}
+		s := model.Student{}
 		err = stat.Scan(&s.Id, &s.Name, &s.Sex, &s.Address)
 		if err != nil {
 			log.Panic(err)
@@ -49,9 +50,9 @@ func (Rawcrud) SelectLeftJoin(lsql string) {
 	}
 	defer stat.Close()
 
-	var sgs []StudentGrade
+	var sgs []model.StudentGrade
 	for stat.Next() {
-		sg := StudentGrade{}
+		sg := model.StudentGrade{}
 		err = stat.Scan(&sg.Id, &sg.Name, &sg.Sex, &sg.Address, &sg.StudentId, &sg.GradeName)
 		if err != nil {
 			log.Panic(err)
@@ -66,7 +67,7 @@ func (Rawcrud) Insert(isql string) {
 		log.Panic(err)
 	}
 
-	s := Student{
+	s := model.Student{
 		0, "INC.COM", 1, "Paris",
 	}
 	_, err = tx.Exec(isql, s.Name, s.Sex, s.Address)
@@ -82,7 +83,7 @@ func (Rawcrud) Update(usql string) {
 		log.Panic(err)
 	}
 
-	s := Student{
+	s := model.Student{
 		4, "GODFATHER.COM", 1, "ICELAND",
 	}
 	_, err = tx.Exec(usql, s.Name, s.Sex, s.Address, s.Id)
@@ -98,7 +99,7 @@ func (Rawcrud) Delete(dsql string) {
 		log.Panic(err)
 	}
 
-	s := Student{
+	s := model.Student{
 		Id: 3,
 	}
 	_, err = tx.Exec(dsql, s.Id)

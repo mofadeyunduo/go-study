@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo "INFO: go check start"
+
+gocmd() {
+     echo $1
+     ($1)
+     if (( $? != 0 ))
+     then
+          echo "$2"
+          exit 1 
+     fi
+}
+
+gocmd "go build ./..." "ERROR: go build failed"
+gocmd "go vet ./..." "ERROR: go vet failed"
+gocmd "go fmt ./..." "ERROR: go fmt failed"
+gocmd "go clean ./..." "ERROR: go clean failed"
+gocmd "go test ./..." "ERROR: go test failed"
+
+echo "INFO: go check successfully"
+exit 0
